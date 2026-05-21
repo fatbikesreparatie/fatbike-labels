@@ -109,7 +109,17 @@ def maak_dhl_label(order, dhl_type, totaal_kg):
             "email": order.get("email", "")
         },
         "shipper": {
-            "deliveringPartyAccount": DHL_ACCOUNT
+            "deliveringPartyAccount": DHL_ACCOUNT,
+            "name": {
+                "companyName": os.environ.get("SHIPPER_NAME", "Fatbike Reparatie")
+            },
+            "address": {
+                "countryCode": "NL",
+                "postalCode":  os.environ.get("SHIPPER_ZIP", "4331JV"),
+                "city":        os.environ.get("SHIPPER_CITY", "Middelburg"),
+                "street":      os.environ.get("SHIPPER_STREET", ""),
+                "number":      os.environ.get("SHIPPER_NR", "")
+            }
         },
         "pieces": [{
             "parcelType": dhl_type,
