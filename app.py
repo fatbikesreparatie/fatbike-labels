@@ -236,7 +236,7 @@ DASHBOARD_HTML = """
 <div class="stats">
   <div class="stat"><div class="n">{{ orders|length }}</div><div class="l">Orders vandaag</div></div>
   <div class="stat"><div class="n">{{ orders|selectattr('status','equalto','label aangemaakt')|list|length }}</div><div class="l">Labels aangemaakt</div></div>
-  <div class="stat"><div class="n">{{ orders|selectattr('status','startswith','FOUT')|list|length }}</div><div class="l">Fouten</div></div>
+  <div class="stat"><div class="n">{{ orders|selectattr('status','ne','label aangemaakt')|list|length }}</div><div class="l">Fouten</div></div>
 </div>
 
 {% if orders %}
